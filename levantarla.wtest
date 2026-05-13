@@ -1,0 +1,47 @@
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+// levantarla.wtest
+import objetos.*
+describe "test levantarla"{
+    method initialize(){
+        game.addVisual(lionel)
+        game.addVisual(pelota)
+        game.cellSize(40)
+        game.width(15)
+        game.height(10)
+        lionel.position(game.at(3,5))
+        pelota.position(game.at(5,5))
+    }
+    test "pelota reconoce que esta en la misma posicion que lionel"{
+        pelota.position(lionel.position())
+        assert.that(pelota.estoyConLionel())
+    }
+
+    test "pelota no esta en la misma posicion que lionel, no puede ser levantada, falla"{
+        assert.throwsException({ pelota.validarColisionLionel() })
+    }
+
+    test "pelota sube, cambia su posicion en eje y, deja tranquilo al eje x"{
+        assert.equals(5, pelota.position().y())
+        assert.equals(5, pelota.position().x())
+        pelota.subir()
+        assert.equals(6, pelota.position().y())
+        assert.equals(5, pelota.position().x())
+    }
+
+    test "pelota baja, cambia su posicion sobre el eje y, deja tranqui,o al eje x"{
+        assert.equals(5, pelota.position().y())
+        assert.equals(5, pelota.position().x())
+        pelota.bajar()
+        assert.equals(4, pelota.position().y())
+        assert.equals(5, pelota.position().x())
+    }
+}
