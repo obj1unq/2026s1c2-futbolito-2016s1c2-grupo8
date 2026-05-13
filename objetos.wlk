@@ -64,7 +64,7 @@ object pelota {
 	}
 
 	method caida(){
-		return self.position().y()+1
+		return self.position().y()-1
 	}
 
 }
