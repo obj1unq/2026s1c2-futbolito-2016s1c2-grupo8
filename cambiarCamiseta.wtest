@@ -1,0 +1,22 @@
+import objetos.*
+
+describe "test cambiar camiseta" {
+  method initialize() {
+    game.addVisual(lionel)
+    game.cellSize(40)
+    game.width(15)
+    game.height(10)
+    lionel.position(game.at(0, 5))
+  }
+  
+  test "lionel cambia su camiseta cuando esta sobre la banda" {
+    assert.equals("lionel-titular.png", lionel.image())
+    lionel.cambiarCamiseta()
+    assert.equals("lionel-suplente.png", lionel.image())
+  }
+  
+  test "lionel no cambia su camiseta cuando no esta sobre la banda, falla" {
+    lionel.position(game.at(1, 5))
+    assert.throwsException({ lionel.cambiarCamiseta() })
+  }
+}
