@@ -1,3 +1,5 @@
+// pgmProgram.wpgm
+// pgmProgram.wpgm
 import wollok.game.*
 import objetos.*
 
@@ -14,6 +16,7 @@ program futbolito{
 	keyboard.right().onPressDo({lionel.avanzar()})
 	keyboard.p().onPressDo({lionel.patear()})
 	keyboard.t().onPressDo({lionel.hacerTaquito()})
+	keyboard.l().onPressDo({pelota.levantarla()})
 
 	game.start()
 
